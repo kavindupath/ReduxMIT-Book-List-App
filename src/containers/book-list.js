@@ -9,7 +9,11 @@ class BookList extends React.Component{
     {
         return this.props.Localbooks.map((book)=> {
             return(
-            <li key={book.title} className="list-group-item">{book.title}</li>
+            <li key={book.title}
+                onClick ={()=> this.props.LocalselectBook(book)}
+                className="list-group-item">
+                {book.title}
+            </li>
             );
         });
     }
