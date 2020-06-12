@@ -1,10 +1,11 @@
 import React from "react";
+import {connect} from "react-redux";
 
-export default class BookList extends React.Component{
+class BookList extends React.Component{
 
     renderList()
     {
-        return this.props.books.map((book)=> {
+        return this.props.Localbooks.map((book)=> {
             return(
             <li key={book.title} className="list-group-item">{book.title}</li>
             );
@@ -15,9 +16,20 @@ export default class BookList extends React.Component{
     render(){
         return(
             <ul className="list-group col-sm-4">
-
+               
                 {this.renderList()}
             </ul>
         )
     }
 }
+
+
+function mapStateToProps(state){
+    return {
+        Localbooks: state.books
+       
+    };
+}
+
+
+export default connect (mapStateToProps)(BookList);
